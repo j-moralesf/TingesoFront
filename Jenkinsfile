@@ -14,10 +14,10 @@ pipeline{
           dir("/var/lib/jenkins/workspace/tingeso-FrontEnd"){
             withSonarQubeEnv('sonarcloud2') { // Will pick the global server connection you have configured
               sh "sonar-scanner \
-                  -Dsonar.organization=betrayed10 \
-                  -Dsonar.projectKey=betrayed10_TingesoFront2 \
-                  -Dsonar.sources=. \
-                  -Dsonar.host.url=https://sonarcloud.io"
+                -Dsonar.organization=betrayed10 \
+                -Dsonar.projectKey=betrayed10_TingesoFront2 \
+                -Dsonar.sources=. \
+                -Dsonar.host.url=https://sonarcloud.io"
             }
           }
       }
