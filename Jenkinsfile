@@ -11,7 +11,7 @@ pipeline{
     
     stage('Docker Build'){
       steps{
-        dir("/var/lib/jenkins/workspace/tingeso-Front"){
+        dir("/var/lib/jenkins/workspace/tingeso-FrontEnd"){
         // sudo usermod -a -G docker jenkins
         // reboot
         sh 'docker build -t lnkyn/tingesofront:latest .'
