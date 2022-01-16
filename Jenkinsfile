@@ -12,9 +12,8 @@ pipeline{
     stage('SonarQube analysis') {
       steps{
           dir("/var/lib/jenkins/workspace/tingeso-FrontEnd"){
-            def scannerHome = tool 'SonarScanner 4.2.0.1873';
             withSonarQubeEnv('sonarcloud2') { // Will pick the global server connection you have configured
-              sh "${scannerHome}/bin/sonar-scanner"
+              sh "/opt/sonar-scanner/bin/sonar-scanner"
             }
           }
       }
