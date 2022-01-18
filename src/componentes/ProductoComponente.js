@@ -1,9 +1,7 @@
 import axios from 'axios';
-import React,{useState} from 'react';
+import React from 'react';
 import ProductoServicio from '../servicios/ProductoServicio';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 
 class ProductoComponente extends React.Component{
 
@@ -15,7 +13,7 @@ class ProductoComponente extends React.Component{
             form:{
                     codigo:'',
                     nombre:'',
-                    fechaVencimiento: new Date(),
+                    fechaVencimiento: '',
                     categoria:'',
                     precio:'',
             }
@@ -28,8 +26,8 @@ class ProductoComponente extends React.Component{
             this.setState({productos:response.data})
         });
     }
-    deleteProducto = async (producto) => {
-        await  axios.delete('http://localhost:8080/api/producto/'+ producto)
+    deleteProducto = async (id) => {
+        await  axios.delete('http://localhost:8080/api/producto/'+ id)
         this.componentDidMount();
     }
     modalInsertar=()=>{
@@ -44,9 +42,6 @@ class ProductoComponente extends React.Component{
           }
         });
         console.log(this.state.form);
-    }
-    dateChange=fecha=>{
-        this.setState({fecha:fecha});
     }
     peticionPost=async()=>{
         await axios.post('http://localhost:8080/api/producto/',this.state.form).then(response=>{
@@ -83,7 +78,7 @@ class ProductoComponente extends React.Component{
                                     <td>{producto.fechaVencimiento}</td>
                                     <td>{producto.categoria}</td>
                                     <td>{producto.precio}</td>
-                                    <button style={{borderRadius:50}}onClick={() => this.deleteProducto(producto)}>Delete</button>
+                                    <button style={{borderRadius:50}}onClick={() => this.deleteProducto(producto.id)}>Delete</button>
                                 </tr>
                             )
                         }
@@ -103,8 +98,8 @@ class ProductoComponente extends React.Component{
                             <label htmlFor='nombre'>Nombre</label>
                             <input className='form-control' type="text" name="nombre" id="nombre" onChange={this.handleChange} value={form.nombre}/>
                             <br/>
-                            <label htmlFor='nombre'>Fecha</label>
-                            <DatePicker value={form.fechaVencimiento}/>
+                            <label htmlFor='fecha'>Fecha</label>
+                            <input className='form-control' type="text" name="fecha" id="fecha" onChange={this.handleChange} value={form.fechaVencimiento}/>
                             <br/>
                             <label htmlFor='categoria'>Categoria</label>
                             <input className='form-control' type="text" name="categoria" id="categoria" onChange={this.handleChange}value={form.categoria}/>

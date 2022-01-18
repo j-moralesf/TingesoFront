@@ -4,14 +4,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {MuiPickersUtilsProvider} from '@material-ui/pickers';
-import DateFnsUtils from '@date-io/date-fns';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <App />
-    </MuiPickersUtilsProvider>
+  <React.StrictMode> 
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
