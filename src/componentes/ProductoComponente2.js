@@ -58,7 +58,7 @@ class ProductoComponente extends React.Component{
         const {form} = this.state;
         return(
             <div>
-                <h1 className='text-center' >Lista De Productos</h1>
+                <h1 className='text-center' >Lista De Productos (Martes 2022)</h1>
                 <a href='http://localhost:32000/createProduct'style={{position: 'fixed', top: 20, right: 0,borderRadius:50}}>
                 Añadir producto
                 </a>
