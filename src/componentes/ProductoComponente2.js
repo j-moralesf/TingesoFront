@@ -20,7 +20,6 @@ class ProductoComponente extends React.Component{
         }
     }
 
-
     componentDidMount(){
         ProductoServicio.getProductos().then((response) => {
             this.setState({productos:response.data})
@@ -43,6 +42,10 @@ class ProductoComponente extends React.Component{
         });
         console.log(this.state.form);
     }
+    crearProducto=()=>{
+        window.location.href="http://localhost:32000/createProduct"
+    }
+
     peticionPost=async()=>{
         await axios.post('http://localhost:8080/api/producto/',this.state.form).then(response=>{
             this.modalInsertar();
@@ -56,7 +59,11 @@ class ProductoComponente extends React.Component{
         return(
             <div>
                 <h1 className='text-center' >Lista De Productos</h1>
-                <button style={{position: 'fixed', top: 20, right: 0,borderRadius:50}} onClick={this.modalInsertar}>Añadir producto</button>
+                <a href='http://localhost:32000/createProduct'style={{position: 'fixed', top: 20, right: 0,borderRadius:50}}>
+                Añadir producto
+                </a>
+               {/*  <Link to="/createProduct">About</Link> */}
+                {/* <button style={{position: 'fixed', top: 20, right: 0,borderRadius:50}} onClick={this.crearProducto()}>Añadir producto</button> */}
                 <table className='table table-striped'>
                     <thead>
                         <tr>

@@ -1,0 +1,16 @@
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(169, 207, 230);
+    height: 100vh;
+    align-items: center;
+    justify-content: center
+}
+.titulo{
+    text-align: center;
+}
+.cont{
+    width: 20rem;
+    background-color: white;
+    height: 35rem;
+}
